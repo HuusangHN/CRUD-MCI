@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import CustomerList from './components/CustomerList';
+import CustomerForm from './components/CustomerForm';
+import CustomerDetail from './components/CustomerDetail';
+import Register from './components/Register';
+import Login from './components/Login';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+const App = () => (
+  <Router>
+    <div className="container">
+      <h1>Quản lý khách hàng</h1>
+      <Routes>
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/customers" element={<CustomerList />} />
+        <Route path="/customers/new" element={<CustomerForm />} />
+        <Route path="/customers/edit/:id" element={<CustomerForm />} />
+        <Route path="/customers/:id" element={<CustomerDetail />} />
+      </Routes>
     </div>
-  );
-}
+  </Router>
+);
 
 export default App;
